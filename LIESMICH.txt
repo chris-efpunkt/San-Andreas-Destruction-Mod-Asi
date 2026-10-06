@@ -1,0 +1,103 @@
+﻿SA DESTRUCTION v3.6.2
+=====================
+Zerstörbare Umgebung für GTA San Andreas im Stil von Red Factions Geo-Mod.
+
+Jede Explosion im Spiel - Granaten, Raketen, Fernzünder, explodierende
+Fahrzeuge - sprengt einen echten Krater in die Originalwelt. Dünne Dächer,
+Wände und Brückenplatten lassen sich durchbrechen, Krater zu Tunneln verbinden,
+Bäume und Laternen werden umgeworfen. Sichtbare Welt und Kollision werden
+beide verändert: Durch aufgesprengte Stellen kann man laufen, fahren und
+schießen.
+
+
+VORAUSSETZUNGEN
+---------------
+- GTA San Andreas für PC mit gta_sa.exe in Version 1.0 US.
+  (Steam / Rockstar Launcher / 1.01 / 3.0 brauchen ein Downgrade auf 1.0 US.
+  Mit jeder anderen exe schaltet sich die Mod ab und schreibt das ins Log.)
+- Ein ASI Loader (z. B. Silent's ASI Loader oder Ultimate ASI Loader).
+- Optional: Mod Loader.
+
+
+INSTALLATION
+------------
+Mit Mod Loader (empfohlen):
+    SADestruction.asi kopieren nach   <GTA-Ordner>\modloader\SA Destruction\
+
+Ohne Mod Loader:
+    SADestruction.asi kopieren nach   <GTA-Ordner>\   (oder <GTA-Ordner>\scripts\)
+
+Das ist alles. Es wird keine Spieldatei ersetzt oder verändert.
+Der Ordner "source" wird zum Spielen nicht gebraucht.
+
+
+DEINSTALLATION
+--------------
+SADestruction.asi löschen (und SADestruction.log daneben). Sonst wurde nichts
+verändert.
+
+
+TASTEN
+------
+F8   Reset: alle Krater, Löcher und Tunnel werden zurückgenommen, zerstörte
+     Objekte und umgeworfene Bäume / Laternen stehen wieder. Wer gerade in
+     einem Krater steht, wird auf den wiederhergestellten Boden gesetzt.
+F7   Umwerfen von Bäumen und Laternen an / aus.
+
+
+GUT ZU WISSEN
+-------------
+- Nur die Außenwelt ist zerstörbar. Innenräume bleiben unverändert.
+- Nichts ist dauerhaft: Krater werden nicht im Spielstand gespeichert, und
+  ein Gebiet, das man weit hinter sich lässt, ist wieder heil, wenn das Spiel
+  es das nächste Mal lädt.
+- Die erste Explosion hinterlässt eine Mulde. Weitere an derselben Stelle
+  graben tiefer; Dünnes (Dächer, Wände, Brückenplatten) wird durchbrochen.
+- Gebäude, die nur eine leere Hülle sind, werden nicht geöffnet: Hinter der
+  Wand ist nichts, wohin man durchbrechen könnte.
+- Sehr oft getroffene Objekte können die Größengrenze eines Spielmodells
+  erreichen; weitere Explosionen dort werden dann abgelehnt (steht im Log).
+  F8 hebt das wieder auf.
+- F8 kann bis zu 512 veränderte Objekte zurücksetzen. Darüber hinaus werden
+  spätere Objekte erst wieder heil, wenn das Spiel sie neu lädt.
+- Andere Fahrzeuge und Passanten in einem Krater werden von F8 nicht versetzt.
+
+
+KOMPATIBILITÄT
+--------------
+- Funktioniert mit der Originalkarte. Map-Mods sollten funktionieren, solange
+  sie gewöhnliche statische Weltobjekte verwenden, sind aber nicht getestet.
+- Nicht für SA-MP / MTA: Die Änderungen existieren nur auf dem eigenen PC.
+- Andere ASI-Mods, die an derselben Stelle der Spielschleife einhaken, werden
+  weiter aufgerufen, nicht ersetzt.
+
+
+FEHLERSUCHE
+-----------
+Die Mod schreibt SADestruction.log neben SADestruction.asi.
+
+- Gar keine Log-Datei:     ASI Loader fehlt oder die .asi liegt im falschen
+                           Ordner.
+- "HOOK FAILED" im Log:    gta_sa.exe ist nicht Version 1.0 US.
+- Kein Krater an einer Stelle: Das Log nennt zu jeder Explosion den Grund.
+
+Bei Fehlermeldungen bitte SADestruction.log und einen Screenshot mitschicken.
+
+
+ÄNDERUNGEN
+----------
+3.6.2  F8 setzt jetzt alles zurück (Krater, Löcher, Tunnel, zerstörte und
+       umgeworfene Objekte), statt einen Testkrater zu erzeugen.
+3.6.1  Behoben: Explodierende Fahrzeuge erzeugten manchmal einen Hügel statt
+       eines Kraters ("invertierter Krater").
+3.6    Durchbrüche durch Dächer, Wände und Brückenplatten, Tunnel,
+       umgeworfene Bäume und Laternen.
+
+
+QUELLCODE
+---------
+Der komplette Quellcode liegt im Ordner "source" (reines C, ohne
+Laufzeitbibliothek).
+Bauen:  sh build.sh   (clang + lld, LLVM 18; erzeugt SADestruction.asi)
+Der Ordner "test" enthält die Offline-Testprogramme, die die Logik der Mod
+gegen einen simulierten Spielspeicher laufen lassen.
